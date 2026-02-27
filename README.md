@@ -4,6 +4,8 @@ A fast and efficient JSON Parser designed to split out JSON data into multiple S
 
 The Parser utilizes aliasing to declare the JSON path of the field. The Parser builds an indexed mapping of the JSON while it walks through, while being aware of its positioning, allowing for easy assignment of values from any nested level of the JSON, making foreign keys a breeze.
 
+All the code is found in `parser.py`
+
 ## How to Use
 
 ```python
