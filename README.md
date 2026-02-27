@@ -45,7 +45,7 @@ The Parser automatically takes all columns and adds an `etl_row_hash` to each re
 
 The `*` wildcard symbol represents any index within the array, which means you can end up with multiple records for a model (one record for each index found in the array) from a single nested JSON object.  
 
-> **Note:** Every field must have an alias and every path needs `root` in front of it.
+> **Note:** Every field must have an alias and every alias path needs `root` in front of it.
 
 ## Example
 
