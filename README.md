@@ -43,7 +43,7 @@ The Parser automatically takes all columns and adds an `etl_row_hash` to each re
 - `root.invoice_items[*].transactions[*].tx_id`: grabs ALL the `tx_id` fields found within the transactions array that is within each object of the invoice_items array within the JSON object
 - `root.invoice_items[*].tags`: this grabs the `tags` array fields within the invoice_items array. Due to data type limitations, if an array is pulled, it is always cast to a string.
 
-The `*` wildcard symbol represents any index within the array, which means you can end up with multiple records for a model from a single nested JSON object.  
+The `*` wildcard symbol represents any index within the array, which means you can end up with multiple records for a model (one record for each index found in the array) from a single nested JSON object.  
 
 > **Note:** Every field must have an alias and every path needs `root` in front of it.
 
