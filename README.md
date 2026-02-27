@@ -33,7 +33,7 @@ The Parser validates the JSON against the SQLModels as well. If the data cannot 
 
 ## ETL Row Hash
 
-The Parser automatically takes all columns and adds an `etl_row_hash` to each record, which is a hash value (in bytes) of all the values in the row. This allows for easy comparison for updates within an ETL process.
+The Parser automatically takes all columns and adds an `etl_row_hash` to each record, which is a hash value (in bytes) of all the values in the row. This allows for easy comparison for updates within an ETL process for each individual SQLModel.
 
 ## Alias Syntax Examples
 
