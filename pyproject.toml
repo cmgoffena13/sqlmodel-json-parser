@@ -1,0 +1,11 @@
+[project]
+name = "sqlmodel-json-parser"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "ruff>=0.15.4",
+    "sqlmodel>=0.0.37",
+    "xxhash>=3.6.0",
+]
