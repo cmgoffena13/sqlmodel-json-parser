@@ -15,10 +15,11 @@ json_data = response.json()
 
 parser = JSONParser(data_models)
 
-# Each key of "results" maps back to the name of the SQLModels: "Invoice", "InvoiceItem", "InvoiceItemTransaction"
-# Each keyed value is a list of validated dictionaries
+# Parse the JSON, Split Out, and Validate
 results = parser.parse(json_data)
 
+# Each key of "results" maps back to the name of the SQLModels
+# Each value is a list of validated dictionaries
 # {"Invoice": [{"id": 123, ...}, {"id": 124, ...}], "InvoiceItem": [...], "InvoiceItemTransaction": [...]}
 print(results)
 ```
