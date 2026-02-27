@@ -12,11 +12,11 @@ All the code is found in `parser.py`
 # See `tests/models.py` 
 data_models = [Invoice, InvoiceItem, InvoiceItemTransaction]
 
-response = httpx.get("https://example.api.com/invoices")
-json_data = response.json()
-
 # Initialize the Parser (Caches metadata from the models)
 parser = JSONParser(data_models)
+
+response = httpx.get("https://example.api.com/invoices")
+json_data = response.json()
 
 # Parse the JSON, Split Out, and Validate
 results = parser.parse(json_data)
