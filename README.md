@@ -20,7 +20,7 @@ response = httpx.get("https://example.api.com/invoices")
 # Can be an individual JSON object or an array of JSON objects
 json_data = response.json()
 
-# Parse the JSON, Split it out, add a Row Hash, and Validate each record
+# Parse the JSON, Split it out, add Row Hashes, and Validate each record
 results = parser.parse(json_data)
 
 # Each key of "results" maps back to the name of the SQLModels
