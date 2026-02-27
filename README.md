@@ -13,6 +13,7 @@ data_models = [Invoice, InvoiceItem, InvoiceItemTransaction]
 response = httpx.get("https://example.api.com/invoices")
 json_data = response.json()
 
+# Initialize the Parser (Caches metadata from the models)
 parser = JSONParser(data_models)
 
 # Parse the JSON, Split Out, and Validate
