@@ -38,6 +38,7 @@ The Parser automatically takes all columns and adds an `etl_row_hash` to each re
 ## Alias Syntax Examples
 
 - `root.id`: grabs the `id` field in the JSON object root level (invoice_id)
+- `root.geo.latitude`: grabs the `latitude` field in the geo JSON dict within the JSON object 
 - `root.invoice_items[*].id`: grabs ALL the `id` fields found within the invoice_items array within the JSON object
 - `root.invoice_items[*].transactions[*].tx_id`: grabs ALL the `tx_id` fields found within the transactions array that is within each object of the invoice_items array within the JSON object
 - `root.invoice_items[*].tags`: this grabs the `tags` array fields within the invoice_items array. Due to data type limitations, if an array is pulled, it is always cast to a string.
