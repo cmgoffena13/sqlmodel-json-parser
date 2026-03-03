@@ -43,7 +43,7 @@ class JSONParser:
 
         for index in range(min_length):
             current_pieces = [path_pieces[index] for path_pieces in paths_path_pieces]
-            if all(piece == piece[0] for piece in current_pieces):
+            if all(piece == current_pieces[0] for piece in current_pieces):
                 common_path_pieces.append(current_pieces[0])
             else:
                 break
