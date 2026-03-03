@@ -207,7 +207,7 @@ class JSONParser:
     def _clear_json_map(self) -> None:
         self._json_map = {}
 
-    def parse(self, json: JsonValue) -> dict[str, list[dict]]:
+    def parse(self, json: Union[List, Dict]) -> dict[str, list[dict]]:
         if isinstance(json, list):
             self._clear_models_records()
             for json_obj in json:
@@ -217,6 +217,4 @@ class JSONParser:
             self._clear_models_records()
             self._clear_json_map()
             self._walk_json(json)
-        else:
-            raise ValueError("Input JSON data must be a list or dict")
         return self._models_records
