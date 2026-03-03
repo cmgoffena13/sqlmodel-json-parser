@@ -148,9 +148,9 @@ class JSONParser:
         for alias, has_wildcard in self._cached_models_fields[model_name]:
             if has_wildcard:
                 resolved_alias = self._resolve_wildcard_alias(alias, path)
-                value = self._json_map.get(resolved_alias)
+                value = self._json_map[resolved_alias]
             else:
-                value = self._json_map.get(alias)
+                value = self._json_map[alias]
 
             # NOTE: If list, convert to string for general compatibility
             if isinstance(value, list):
