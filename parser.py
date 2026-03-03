@@ -89,6 +89,7 @@ class JSONParser:
                     )
                 else:
                     common_json_path = self._find_deepest_common_path_pattern(aliases)
+
                 self._cached_models_common_path_regex[model_name] = re.compile(
                     re.escape(common_json_path).replace(r"\[\*\]", r"\[\d+\]")
                 )
@@ -170,7 +171,8 @@ class JSONParser:
                 self._models_records[model_name].append(record)
 
     def _walk_json(self, json: JsonValue, path: str = "root") -> None:
-        if path != "root" and self._path_in_aliases(path):
+
+        if self._path_in_aliases(path):
             self._json_map[path] = json
 
         if isinstance(json, dict):
