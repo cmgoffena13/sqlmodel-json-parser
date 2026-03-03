@@ -28,6 +28,11 @@ def create_row_hash(record: dict, sorted_keys: tuple[str]) -> bytes:
     return xxhash.xxh128(data_string.encode("utf-8")).digest()
 
 
+def transform_record_after_validation(record: dict, **kwargs) -> dict:
+    record["etl_row_hash"] = create_row_hash(record, kwargs.get("sorted_keys"))
+    return record
+
+
 class JSONParser:
     def __init__(self, models: list[Type[SQLModel]]):
         self._initialized: bool = False
@@ -229,7 +234,9 @@ class JSONParser:
 
                     data = self._parsing_build_model_data(path, model_name)
                     record = adapter.validate_python(data).model_dump()
-                    record["etl_row_hash"] = create_row_hash(record, sorted_keys)
+                    record = transform_record_after_validation(
+                        record, sorted_keys=sorted_keys
+                    )
                     self._models_records[model_name].append(record)
                 except ValidationError as e:
                     logger.error(
