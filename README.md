@@ -20,7 +20,7 @@ response = httpx.get("https://example.api.com/invoices")
 # Can be an individual JSON object or an array of JSON objects
 json_data = response.json()
 
-# Parse the JSON, Split it out, add Row Hashes, and Validate each record
+# Parse the JSON, Split it out, and Validate each record
 results = parser.parse(json_data)
 
 # Each key of "results" maps back to the name of the SQLModels
@@ -32,10 +32,6 @@ print(results)
 ## Validation
 
 The Parser validates the JSON against the SQLModels as well. If the data cannot conform to the model, then it cannot conform to a table either and the parser will break with a pydantic ValidationError.
-
-## ETL Row Hash
-
-The Parser automatically takes all columns and adds an `etl_row_hash` to each record, which is a hash value (in bytes) of all the values in the row. This allows for easy comparison for updates within an ETL process for each individual SQLModel.
 
 ## Alias Syntax Examples
 
