@@ -47,7 +47,8 @@ class JSONParser:
                 common_path_pieces.append(current_pieces[0])
             else:
                 break
-        return ".".join(common_path_pieces) if common_path_pieces else "root"
+        deepest_path = ".".join(common_path_pieces) if common_path_pieces else "root"
+        return deepest_path
 
     def _find_deepest_wildcard_path_pattern(self, aliases: list[str]) -> str:
         """
