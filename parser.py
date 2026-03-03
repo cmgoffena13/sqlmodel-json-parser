@@ -84,13 +84,13 @@ class JSONParser:
                     self._cached_models_fields[model_name].append((alias, has_wildcard))
 
                 if wildcard_aliases:
-                    json_path_pattern = self._find_deepest_wildcard_path_pattern(
+                    common_json_path = self._find_deepest_wildcard_path_pattern(
                         wildcard_aliases
                     )
                 else:
-                    json_path_pattern = self._find_deepest_common_path_pattern(aliases)
+                    common_json_path = self._find_deepest_common_path_pattern(aliases)
                 self._cached_models_common_path_regex[model_name] = re.compile(
-                    re.escape(json_path_pattern).replace(r"\[\*\]", r"\[\d+\]")
+                    re.escape(common_json_path).replace(r"\[\*\]", r"\[\d+\]")
                 )
 
                 # NOTE: TypeAdapter does not like SQLModels
