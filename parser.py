@@ -146,11 +146,17 @@ class JSONParser:
     def _extract_values_from_json_map(self, model_name: str, path: str) -> Dict:
         data = {}
         for alias, has_wildcard in self._cached_models_fields[model_name]:
+            key = alias
+
             if has_wildcard:
-                resolved_alias = self._resolve_wildcard_alias(alias, path)
-                value = self._json_map[resolved_alias]
-            else:
-                value = self._json_map[alias]
+                key = self._resolve_wildcard_alias(alias, path)
+
+            try:
+                value = self._json_map[key]
+            except KeyError:
+                raise KeyError(
+                    f"Key {key} not found in JSON map for model {model_name} at path {path}"
+                )
 
             # NOTE: If list, convert to string for general compatibility
             if isinstance(value, list):
