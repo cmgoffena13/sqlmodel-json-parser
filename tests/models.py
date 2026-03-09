@@ -20,7 +20,7 @@ class InvoiceItem(SQLModel, table=True):
     )
     quantity: int = Field(alias="root.invoice_items[*].quantity")
     unit_price: float = Field(alias="root.invoice_items[*].unit_price")
-    tags: str = Field(alias="root.invoice_items[*].tags")
+    tags: Optional[str] = Field(alias="root.invoice_items[*].tags")
 
 
 class InvoiceItemTransaction(SQLModel, table=True):
