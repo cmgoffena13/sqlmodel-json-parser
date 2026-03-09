@@ -8,6 +8,24 @@ All the code is found in `parser.py`
 
 ## How to Use
 
+### SQLModel Code
+
+Simply add the json path as an alias for the field.
+
+```python
+class InvoiceItem(SQLModel, table=True):
+    invoice_id: str = Field(foreign_key="invoice.id", alias="root.id")
+    id: str = Field(primary_key=True, alias="root.invoice_items[*].id")
+    sku: str = Field(alias="root.invoice_items[*].sku")
+    description: Optional[str] = Field(
+        alias="root.invoice_items[*].description", nullable=True
+    )
+    quantity: int = Field(alias="root.invoice_items[*].quantity")
+    unit_price: float = Field(alias="root.invoice_items[*].unit_price")
+    tags: str = Field(alias="root.invoice_items[*].tags", nullable=True)
+```
+
+### Execution Code
 ```python
 # See `tests/models.py` 
 data_models = [Invoice, InvoiceItem, InvoiceItemTransaction]
